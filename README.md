@@ -32,6 +32,3 @@ Steammodded (1.0 and up) and Lovely (0.6 and up) is **REQUIRED**.<br>
 
 Steammodded: [https://github.com/Steamodded/smods/releases]<br>
 Lovely: [https://github.com/ethangreen-dev/lovely-injector/releases]
-
-*Installation:<br>*
-Simply extract the archive from the "Releases" tab to %appdata%\Balatro\Mods\ReversedTarotCards folder.
