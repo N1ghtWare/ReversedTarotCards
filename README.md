@@ -2,7 +2,7 @@ A Balatro mod that adds a type of Tarot Cards.<br>
 
 =======================<br>
 ⚠️ Work In Progress ⚠️<br>
-=======================<br><br>
+=======================<br>
 
 0:     Reversed Fool: TBA<br>
 I:     Reversed Magician: TBA<br>
