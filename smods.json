@@ -1,0 +1,19 @@
+{
+    "priority": 2137,
+    "id": "ReverseTarotCards",
+    "name": "Torat Cards",
+    "display_name": "Torat Cards",
+    "badge_colour": "A34720",
+    "badge_text_colour": "FFFFFF",
+    "author": [
+        "NightWare"
+    ],
+    "description": "",
+    "prefix": "ReverseTarotCards",
+    "main_file": "ReverseTarotCards.lua",
+    "version": "1.0",
+    "dependencies": [
+        "Steamodded (>=1.*)",
+        "Lovely (>=0.6)"
+    ]
+}
