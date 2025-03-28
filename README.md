@@ -6,7 +6,7 @@ A Balatro mod that adds a type of Tarot Cards.<br>
 
 0:     Reversed Fool: TBA<br>
 I:     Reversed Magician: TBA<br>
-II:    Reversed High Priestess: Creates up to Pluto Planet cards.<br>
+II:    Reversed High Priestess: Creates up to 2 Pluto Planet cards.<br>
 III:   Reversed Empress: TBA<br>
 IV:    Reversed Emperor: TBA<br>
 V:     Reversed Hierophant: TBA<br>
