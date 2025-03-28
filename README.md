@@ -1,4 +1,4 @@
-A Balatro mod that adds a type of Tarot Cards.<br>
+A Balatro mod that adds a new type of Tarot Cards.<br>
 
 =================<br>
 ⚠️ Work In Progress ⚠️<br>
