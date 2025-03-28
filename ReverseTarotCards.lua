@@ -1,7 +1,7 @@
-local USE_DEBUG_RATE = true
+local USE_DEBUG_RATE = false
 local DISPLAY_DEBUG_MESSAGES = true
 
-local SHOP_RATE = 8
+local SHOP_RATE = 4
 if USE_DEBUG_RATE then SHOP_RATE = 100 end
 
 local function PrintDebug(message)
