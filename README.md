@@ -1,31 +1,31 @@
 A Balatro mod that adds a type of Tarot Cards.<br>
 
-=======================
-⚠️ Work In Progress ⚠️
-=======================
+=======================<br>
+⚠️ Work In Progress ⚠️<br>
+=======================<br><br>
 
-0:     Reversed Fool: TBA
-I:     Reversed Magician: TBA
-II:    Reversed High Priestess: Creates up to Pluto Planet cards.
-III:   Reversed Empress: TBA 
-IV:    Reversed Emperor: TBA
-V:     Reversed Hierophant: TBA
-VI:    Reversed Lovers: TBA
-VII:   Reversed Chariot: TBA
-VIII:  Reversed Justice: TBA
-IX:    Reversed Hermit: Creates a Negative Credit Card Joker, if a Credit Card is already present - grants a random amount of money.
-X:     Reversed Wheel of Fortune: TBA
-XI:    Reversed Strength: Decreases rank of a selected playing card by 2.
-XII:   Reversed Hanged Man: TBA
-XIII:  Reversed Death: TBA
-XIV:   Reversed Temperance: TBA
-XV:    Reversed Devil: TBA
-XVI:   Reversed Tower: TBA
-XVII:  Reversed Star: TBA
-XVIII: Reversed Moon: TBA
-XIX:   Reversed Sun: TBA
-XX:    Reversed Judgement: TBA
-XXI:   Reversed World: TBA
+0:     Reversed Fool: TBA<br>
+I:     Reversed Magician: TBA<br>
+II:    Reversed High Priestess: Creates up to Pluto Planet cards.<br>
+III:   Reversed Empress: TBA<br>
+IV:    Reversed Emperor: TBA<br>
+V:     Reversed Hierophant: TBA<br>
+VI:    Reversed Lovers: TBA<br>
+VII:   Reversed Chariot: TBA<br>
+VIII:  Reversed Justice: TBA<br>
+IX:    Reversed Hermit: Creates a Negative Credit Card Joker, if a Credit Card is already present - grants a random amount of money.<br>
+X:     Reversed Wheel of Fortune: TBA<br>
+XI:    Reversed Strength: Decreases rank of a selected playing card by 2.<br>
+XII:   Reversed Hanged Man: TBA<br>
+XIII:  Reversed Death: TBA<br>
+XIV:   Reversed Temperance: TBA<br>
+XV:    Reversed Devil: TBA<br>
+XVI:   Reversed Tower: TBA<br>
+XVII:  Reversed Star: TBA<br>
+XVIII: Reversed Moon: TBA<br>
+XIX:   Reversed Sun: TBA<br>
+XX:    Reversed Judgement: TBA<br>
+XXI:   Reversed World: TBA<br><br>
 
 
 Steammodded (1.0 and up) and Lovely (0.6 and up) is **REQUIRED**.<br>
