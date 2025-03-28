@@ -15,7 +15,7 @@ VII:   Reversed Chariot: TBA<br>
 VIII:  Reversed Justice: TBA<br>
 IX:    Reversed Hermit: Creates a Negative Credit Card Joker, if a Credit Card is already present - grants a random amount of money.<br>
 X:     Reversed Wheel of Fortune: TBA<br>
-XI:    Reversed Strength: Decreases rank of a selected playing card by 2 (Q -> 10).<br>
+XI:    Reversed Strength: Decreases rank of a selected playing card by 2 (eg. Q -> 10).<br>
 XII:   Reversed Hanged Man: TBA<br>
 XIII:  Reversed Death: TBA<br>
 XIV:   Reversed Temperance: TBA<br>
