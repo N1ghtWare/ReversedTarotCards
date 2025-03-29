@@ -1,4 +1,5 @@
 A Balatro mod that adds a new type of Tarot Cards.<br>
+Reversed Tarot Cards are unlocked from the get-go, and are rarer than regular Tarot Cards.<br>
 
 =================<br>
 ⚠️ Work In Progress ⚠️<br>
