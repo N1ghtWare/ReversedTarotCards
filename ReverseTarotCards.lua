@@ -1,11 +1,41 @@
 local USE_DEBUG_RATE = false
 local DISPLAY_DEBUG_MESSAGES = true
 
-local SHOP_RATE = 4
+local SHOP_RATE = 3
 if USE_DEBUG_RATE then SHOP_RATE = 100 end
 
-local function PrintDebug(message)
-	if DISPLAY_DEBUG_MESSAGES then sendDebugMessage(message) end
+local function PrintDebug(message, ...)
+	if DISPLAY_DEBUG_MESSAGES then print(message, ...) end
+end
+
+local possibleHands = {
+	"Flush Five",
+	"Flush House",
+	"Five of a Kind",
+	"Straight Flush",
+	"Four of a Kind",
+	"Full House",
+	"Flush",
+	"Straight",
+	"Three of a Kind",
+	"Two Pair",
+	"Pair",
+	"High Card",
+}
+
+local function GetMostPlayedHand()
+	local mostPlayed = 0
+	local handName = "High Card"
+
+	for _, handInfo in pairs(G.GAME.hand_usage) do
+		if handInfo.count > mostPlayed then
+			mostPlayed = handInfo.count
+			handName = handInfo.order
+		end
+	end
+
+	PrintDebug(string.format("Found most played hand: %s", handName))
+	return handName
 end
 
 local CARDS = {
@@ -47,7 +77,7 @@ SMODS.ConsumableType({
 		name = "Reversed Tarot",
 		undiscovered = undiscoveredText,
 	},
-	collection_rows = { 1, 3 },
+	collection_rows = { 3, 1 },
 	shop_rate = SHOP_RATE,
 })
 
@@ -108,8 +138,8 @@ SMODS.Consumable({
 	loc_txt = {
 		name = "Reversed High Priestess",
 		text = {
-			"Creates up to 2 {C:blue}Pluto Planet{} cards",
-			"(Must have room)",
+			"Creates a {C:blue}Planet{} card for the most played {C:attention}poker hand{}",
+			"{C:inactive}(Must have room)",
 		},
 		undiscovered = undiscoveredText,
 	},
@@ -117,29 +147,38 @@ SMODS.Consumable({
 		return true
 	end,
 	use = function(self, card, area, copier)
+		local actualTarotCard = copier or card
+
 		G.E_MANAGER:add_event(Event({
 			trigger = "after",
 			delay = 0.4,
 			func = function()
 				play_sound("tarot1")
+				actualTarotCard:juice_up(0.3, 0.5)
 				return true
 			end,
 		}))
 
-		local amountOfCardsToSpawn = 2 - (#G.consumeables.cards or 0)
+		-- smods has the power to add new play hand iirc, so better check the whole self.P_CENTERS and get the proper planet card id
+		-- we'll give the high card if something goes wrong or the most played hand is not determined yet
+		local mostPlayedHand = GetMostPlayedHand()
+		local mostPlayedHandPlanetID = "c_pluto"
 
-		for _ = 1, amountOfCardsToSpawn do
-			G.E_MANAGER:add_event(Event({
-				trigger = "after",
-				delay = 0.4,
-				func = function()
-					local _card = create_card("Planet", G.consumeables, false, false, false, false, "c_pluto")
-					_card:add_to_deck()
-					G.consumeables:emplace(_card)
-					return true
-				end,
-			}))
+		for cardID, cardInfo in pairs(G.P_CENTERS) do
+			if cardInfo.config and cardInfo.config.hand_type == mostPlayedHand then mostPlayedHandPlanetID = cardID end
 		end
+
+		G.E_MANAGER:add_event(Event({
+			trigger = "after",
+			delay = 0.4,
+			func = function()
+				actualTarotCard:juice_up(0.3, 0.5)
+				local _card = create_card("Planet", G.consumeables, false, false, false, false, mostPlayedHandPlanetID)
+				_card:add_to_deck()
+				G.consumeables:emplace(_card)
+				return true
+			end,
+		}))
 	end,
 })
 
@@ -152,6 +191,7 @@ SMODS.Consumable({
 		text = {
 			"Decreases rank of a selected",
 			"playing card by {C:attention}2{}",
+			"{C:inactive}(example: Q -> 10, 2 -> K)",
 		},
 		undiscovered = undiscoveredText,
 	},
@@ -159,6 +199,8 @@ SMODS.Consumable({
 		if #G.hand.highlighted == 1 then return true end
 	end,
 	use = function(self, card, area, copier)
+		local actualTarotCard = copier or card
+
 		local selectedCard = G.hand.highlighted[1]
 		local suitPrefix = string.sub(selectedCard.base.suit, 1, 1) .. "_"
 		local rankSuffix = GetRankSuffix(selectedCard.base.id, -2)
@@ -169,9 +211,12 @@ SMODS.Consumable({
 			func = function()
 				play_sound("tarot1")
 				selectedCard:flip()
+				actualTarotCard:juice_up(0.3, 0.5)
 				return true
 			end,
 		}))
+
+		actualTarotCard:juice_up(0.3, 0.5)
 
 		selectedCard:flip()
 		selectedCard:set_base(G.P_CARDS[suitPrefix .. rankSuffix])
@@ -195,11 +240,14 @@ SMODS.Consumable({
 		return true
 	end,
 	use = function(self, card, area, copier)
+		local actualTarotCard = copier or card
+
 		G.E_MANAGER:add_event(Event({
 			trigger = "after",
 			delay = 0.4,
 			func = function()
 				play_sound("tarot1")
+				actualTarotCard:juice_up(0.3, 0.5)
 				return true
 			end,
 		}))
@@ -208,7 +256,7 @@ SMODS.Consumable({
 			ease_dollars(math.random(1, 13), false)
 		else
 			local _card = create_card("Joker", G.jokers, false, "Common", false, false, "j_credit_card", false)
-			_card:set_edition({ negative = true }, true)
+			_card:set_edition({ negative = true }, true, true)
 
 			_card:start_materialize()
 			_card:add_to_deck()
