@@ -5,7 +5,10 @@ A Balatro mod that adds a new type of Tarot Cards.<br>
 =================<br>
 
 <details>
-<h1><summary>List of Reversed Tarot Cards</summary></h1><br>
+<h1>
+  <summary>List of Reversed Tarot Cards</summary>
+</h1>  
+<br>
 0:     Reversed Fool: TBA<br>
 I:     Reversed Magician: TBA<br>
 II:    Reversed High Priestess: Creates a Planet card for the most played poker hand.<br>
