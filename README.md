@@ -10,70 +10,70 @@ A Balatro mod that adds a new type of Tarot Cards.<br>
 <br>
 0:     Reversed Fool ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 I:     Reversed Magician ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 II:    Reversed High Priestess ✅: <details><summary>What it does?</summary>
     Creates a Planet card for the most played poker hand.
-   </details><br>
+   </details>
 III:   Reversed Empress ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 IV:    Reversed Emperor ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 V:     Reversed Hierophant ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 VI:    Reversed Lovers ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 VII:   Reversed Chariot ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 VIII:  Reversed Justice ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 IX:    Reversed Hermit ✅: <details><summary>What it does?</summary>
     Creates a Negative Credit Card Joker, if a Credit Card is already present - grants a random amount of money.
-   </details><br>
+   </details>
 X:     Reversed Wheel of Fortune ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 XI:    Reversed Strength ✅: <details><summary>What it does?</summary>
     Decreases rank of a selected playing card by 2 (eg. Q -> 10).
-   </details><br>
+   </details>
 XII:   Reversed Hanged Man ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 XIII:  Reversed Death ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 XIV:   Reversed Temperance ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 XV:    Reversed Devil ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 XVI:   Reversed Tower ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 XVII:  Reversed Star ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 XVIII: Reversed Moon ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 XIX:   Reversed Sun ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 XX:    Reversed Judgement ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 XXI:   Reversed World ❌: <details><summary>What it does?</summary>
     TBA
-   </details><br>
+   </details>
 
 Steammodded (1.0 and up) and Lovely (0.6 and up) is **REQUIRED**.<br>
 
