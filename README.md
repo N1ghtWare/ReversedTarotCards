@@ -5,16 +5,8 @@ A Balatro mod that adds a new type of Tarot Cards.<br>
 =================<br>
 
 <details>
-  <summary>Spoiler warning</summary>
+<summary>List of Reversed Tarot Cards</summary>
   
-  Spoiler text. Note that it's important to have a space after the summary tag. You should be able to write any markdown you want inside the `<details>` tag... just make sure you close `<details>` afterward.
-  
-  ```javascript
-  console.log("I'm a code block!");
-  ```
-  
-</details>
-
 0:     Reversed Fool: TBA<br>
 I:     Reversed Magician: TBA<br>
 II:    Reversed High Priestess: Creates a Planet card for the most played poker hand.<br>
@@ -37,7 +29,7 @@ XVIII: Reversed Moon: TBA<br>
 XIX:   Reversed Sun: TBA<br>
 XX:    Reversed Judgement: TBA<br>
 XXI:   Reversed World: TBA<br><br>
-
+</details>
 
 Steammodded (1.0 and up) and Lovely (0.6 and up) is **REQUIRED**.<br>
 
