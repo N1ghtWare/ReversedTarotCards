@@ -4,6 +4,17 @@ A Balatro mod that adds a new type of Tarot Cards.<br>
 ⚠️ Work In Progress ⚠️<br>
 =================<br>
 
+<details>
+  <summary>Spoiler warning</summary>
+  
+  Spoiler text. Note that it's important to have a space after the summary tag. You should be able to write any markdown you want inside the `<details>` tag... just make sure you close `<details>` afterward.
+  
+  ```javascript
+  console.log("I'm a code block!");
+  ```
+  
+</details>
+
 0:     Reversed Fool: TBA<br>
 I:     Reversed Magician: TBA<br>
 II:    Reversed High Priestess: Creates a Planet card for the most played poker hand.<br>
