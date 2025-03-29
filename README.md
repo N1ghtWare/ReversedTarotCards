@@ -6,7 +6,7 @@ A Balatro mod that adds a new type of Tarot Cards.<br>
 
 <details>
 <h1>
-  <summary>List of Reversed Tarot Cards</summary>
+  List of Reversed Tarot Cards
 </h1>  
 <br>
 0:     Reversed Fool: TBA<br>
