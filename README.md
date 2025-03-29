@@ -5,10 +5,9 @@ Reversed Tarot Cards are unlocked from the get-go, and are rarer than regular Ta
 ⚠️ Work In Progress ⚠️<br>
 =================<br>
 
-<h1>
+<h2>
   List of Reversed Tarot Cards
-</h1>  
-<br>
+</h2>  
 0:     Reversed Fool ❌: <details><summary>What it does?</summary>
     TBA
    </details>
