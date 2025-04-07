@@ -20,8 +20,8 @@ II:    Reversed High Priestess ✅: <details><summary>What it does?</summary>
 III:   Reversed Empress ❌: <details><summary>What it does?</summary>
     TBA
    </details>
-IV:    Reversed Emperor ❌: <details><summary>What it does?</summary>
-    TBA
+IV:    Reversed Emperor ✅: <details><summary>What it does?</summary>
+    Creates up to 2 random Reversed Tarot cards.
    </details>
 V:     Reversed Hierophant ❌: <details><summary>What it does?</summary>
     TBA
