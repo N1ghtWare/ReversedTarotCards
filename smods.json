@@ -11,7 +11,7 @@
     "description": "",
     "prefix": "ReverseTarotCards",
     "main_file": "ReverseTarotCards.lua",
-    "version": "1.0",
+    "version": "0.2",
     "dependencies": [
         "Steamodded (>=1.*)",
         "Lovely (>=0.6)"

@@ -1,27 +1,21 @@
 local USE_DEBUG_RATE = false
 local DISPLAY_DEBUG_MESSAGES = true
+local SHOP_RATE = 2
 
-local SHOP_RATE = 3
-if USE_DEBUG_RATE then SHOP_RATE = 100 end
+if USE_DEBUG_RATE then
+	SHOP_RATE = 100
+
+	SMODS.Keybind({
+		key_pressed = "r",
+		action = function(self)
+			SMODS.restart_game()
+		end,
+	})
+end
 
 local function PrintDebug(message, ...)
 	if DISPLAY_DEBUG_MESSAGES then print(message, ...) end
 end
-
-local possibleHands = {
-	"Flush Five",
-	"Flush House",
-	"Five of a Kind",
-	"Straight Flush",
-	"Four of a Kind",
-	"Full House",
-	"Flush",
-	"Straight",
-	"Three of a Kind",
-	"Two Pair",
-	"Pair",
-	"High Card",
-}
 
 local function GetMostPlayedHand()
 	local mostPlayed = 0
@@ -38,11 +32,12 @@ local function GetMostPlayedHand()
 	return handName
 end
 
-local CARDS = {
+local REVERSE_TAROT_CARDS = {
 	"rt_consumable_locked", -- undiscovered card
 	"rt_high_priestess",
 	"rt_strength",
 	"rt_hermit",
+	"rt_emperor",
 }
 
 local undiscoveredText = {
@@ -51,7 +46,7 @@ local undiscoveredText = {
 }
 
 -- setup atlases
-for _, atlasKey in pairs(CARDS) do
+for _, atlasKey in pairs(REVERSE_TAROT_CARDS) do
 	SMODS.Atlas({
 		key = atlasKey,
 		path = string.format("%s.png", atlasKey),
@@ -77,7 +72,7 @@ SMODS.ConsumableType({
 		name = "Reversed Tarot",
 		undiscovered = undiscoveredText,
 	},
-	collection_rows = { 3, 1 },
+	collection_rows = { 4, 1 },
 	shop_rate = SHOP_RATE,
 })
 
@@ -138,8 +133,9 @@ SMODS.Consumable({
 	loc_txt = {
 		name = "Reversed High Priestess",
 		text = {
-			"Creates a {C:blue}Planet{} card for the most played {C:attention}poker hand{}",
-			"{C:inactive}(Must have room)",
+			"Creates a {C:blue}Planet{} card for",
+			"the most played {C:attention}poker hand{}",
+			"{E:1}{C:inactive}(Must have room){}",
 		},
 		undiscovered = undiscoveredText,
 	},
@@ -183,6 +179,55 @@ SMODS.Consumable({
 })
 
 SMODS.Consumable({
+	key = "rt_emperor",
+	set = "ReverseTarotCardsType",
+	atlas = "rt_emperor",
+	loc_txt = {
+		name = "Reversed Emperor",
+		text = {
+			"Creates up to 2",
+			"random {C:tarot}Reversed Tarot{} cards",
+			"{E:1}{C:inactive}(Must have room){}",
+		},
+		undiscovered = undiscoveredText,
+	},
+	can_use = function(self, card)
+		return true
+	end,
+	use = function(self, card, area, copier)
+		local actualTarotCard = copier or card
+
+		local consumeableLimit = G.consumeables.config.card_limit
+		local amountOfConsumeables = #G.consumeables.cards
+		local toSpawn = consumeableLimit - amountOfConsumeables
+
+		G.E_MANAGER:add_event(Event({
+			trigger = "after",
+			delay = 0.4,
+			func = function()
+				play_sound("tarot1")
+				actualTarotCard:juice_up(0.3, 0.5)
+				return true
+			end,
+		}))
+
+		for cardIndex = 1, toSpawn do
+			G.E_MANAGER:add_event(Event({
+				trigger = "after",
+				delay = 0.4 * cardIndex,
+				func = function()
+					actualTarotCard:juice_up(0.3, 0.5)
+					local _card = create_card("ReverseTarotCardsType", G.consumeables, false, false, false, REVERSE_TAROT_CARDS[math.random(1, #REVERSE_TAROT_CARDS)])
+					_card:add_to_deck()
+					G.consumeables:emplace(_card)
+					return true
+				end,
+			}))
+		end
+	end,
+})
+
+SMODS.Consumable({
 	key = "rt_strength",
 	set = "ReverseTarotCardsType",
 	atlas = "rt_strength",
@@ -191,7 +236,7 @@ SMODS.Consumable({
 		text = {
 			"Decreases rank of a selected",
 			"playing card by {C:attention}2{}",
-			"{C:inactive}(example: Q -> 10, 2 -> K)",
+			"{E:1}{C:inactive}(example: Q -> 10, 2 -> K){}",
 		},
 		undiscovered = undiscoveredText,
 	},
@@ -228,14 +273,80 @@ SMODS.Consumable({
 	set = "ReverseTarotCardsType",
 	atlas = "rt_hermit",
 	loc_txt = {
-		name = "Reversed Hermit",
-		text = {
-			"Creates a {C:dark_edition}Negative{} {C:attention}Credit Card{} Joker",
-			"if a {C:attention}Credit Card{} is already present",
-			"grants a random amount of money",
+		default = {
+			name = "Reversed Hermit",
+			text = {
+				"Creates a {C:dark_edition}Negative{} {C:attention}Credit Card{} Joker",
+				"if a {C:attention}Credit Card{} is already present",
+			},
+			undiscovered = undiscoveredText,
 		},
-		undiscovered = undiscoveredText,
 	},
+	loc_vars = function(self, info_queue, card)
+		return {
+			main_start = {}, -- Table of UIElements inserted before the main description (-> "Building a UI")
+			main_end = {
+				{
+					n = G.UIT.O,
+					config = {
+						object = DynaText({
+							string = {
+								"grants ",
+							},
+							scale = 0.32,
+							colours = { G.C.UI.TEXT_DARK },
+						}),
+					},
+				},
+				{
+					n = G.UIT.O,
+					config = {
+						object = DynaText({
+							string = {
+								{ string = "rand()", colour = G.C.RED },
+								"1",
+								"2",
+								"3",
+								{ string = "#@!$", colour = G.C.RED },
+								"4",
+								{ string = "$@!#", colour = G.C.RED },
+								"5",
+								"6",
+								"7",
+								{ string = "%!@#", colour = G.C.RED },
+								"8",
+								"9",
+								"10",
+								"11",
+								{ string = "@#%$", colour = G.C.RED },
+								"12",
+								"13",
+							},
+							pop_in_rate = 9999999,
+							silent = true,
+							random_element = true,
+							pop_delay = 0.178,
+							scale = 0.32,
+							min_cycle_time = 0,
+							colours = { G.C.UI.TEXT_DARK },
+						}),
+					},
+				},
+				{
+					n = G.UIT.O,
+					config = {
+						object = DynaText({
+							string = {
+								" money",
+							},
+							scale = 0.32,
+							colours = { G.C.UI.TEXT_DARK },
+						}),
+					},
+				},
+			}, -- Table of UIElements inserted after the main description
+		}
+	end,
 	can_use = function(self, card)
 		return true
 	end,
