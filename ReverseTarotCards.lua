@@ -199,7 +199,7 @@ SMODS.Consumable({
 
 		local consumeableLimit = G.consumeables.config.card_limit
 		local amountOfConsumeables = #G.consumeables.cards
-		local toSpawn = consumeableLimit - amountOfConsumeables
+		local toSpawn = math.max(2, consumeableLimit - amountOfConsumeables)
 
 		G.E_MANAGER:add_event(Event({
 			trigger = "after",
